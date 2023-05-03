@@ -1,0 +1,7 @@
+﻿  Currency.cpp
+  Krone.cpp
+  main.cpp
+C:\Users\CoreV21\source\DataStructuresAndAlgorithms\Lab 2\Lab 2\main.cpp(11,12): warning C4101: 'currencies': unreferenced local variable
+  Soum.cpp
+  Generating Code...
+  Lab 2.vcxproj -> C:\Users\CoreV21\source\DataStructuresAndAlgorithms\Lab 2\Debug\Lab 2.exe
