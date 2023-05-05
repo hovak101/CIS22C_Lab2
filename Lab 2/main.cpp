@@ -7,11 +7,30 @@
 
 using namespace std;
 
+class negativeException : public std ::exception {
+	public:
+	const char* what() const throw(){
+		return "Exception: value must be postitive.";
+	}
+};
+
 int main() {
 	
+try{
 	Currency* currencies[2];
 	currencies[0] = new Soum(2.35);      //should they be dynamically allocated?
 	currencies[1] = new Krone();
+	
+	for(int i = 0; i < 2; i++){
+		delete currencies[i];
+	}
+} 
+	catch(const negativeException& e){
+		std::cerr <<"Exception: " << e.what() << std::endl;
+	}
+	catch(const std::exception& e){
+		std::cerr << "Exception: "<< e.what() << std::endl;
+	}
 
 	currencies[0]->print(); 
 	/*
