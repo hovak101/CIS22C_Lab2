@@ -1,9 +1,16 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include <stdexcept>
 
-class Currency
-{
+class negativeException : public std ::exception {
+public:
+	const char* what() const throw(){
+		return "Exception: value must be postitive.";
+	}
+};
+
+class Currency{	
 protected:
 	int whole;
 	int frac;
@@ -17,6 +24,9 @@ public:
 
 	Currency(double value) {
 		// throw exception if value < 0
+		if (value < 0){
+			throw std::invalid_argument("Currency can't be negative.");
+		}
 		whole = static_cast<int>(value);
 		frac = (value - whole) * 100 + 0.5;  //ask goel
 	}
@@ -31,8 +41,18 @@ public:
 	// Setters and Getters:
 	int getWhole() const { return whole; }
 	int getFrac() const { return frac; }
-	void setWhole(int whole) { this->whole = whole; } //throw exception if negative
-	void setFrac(int frac) { this->frac = frac; }     //throw exception if negative
+	void setWhole(int whole) {
+		if (whole < 0){
+			throw negativeException();
+		}
+	this->whole = whole; 
+	} //throw exception if negative
+	void setFrac(int frac) { 
+		if(frac < 0) {
+			throw negativeException();
+		}
+		this->frac = frac; 
+	}     //throw exception if negative
 
 	// Arithmetic and Comparison Functions:
 	void add(Currency* other) {                  
@@ -59,7 +79,7 @@ public:
 		double finalVal = thisVal + otherVal;
 
 		if (finalVal < 0) {
-			//throw exception
+			throw negativeException(); //throw exception		
 		}
 		else {
 			//convert finalVal to whole and frac
