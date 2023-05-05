@@ -1,7 +1,4 @@
-﻿  Currency.cpp
-  Krone.cpp
-  main.cpp
-C:\Users\CoreV21\source\DataStructuresAndAlgorithms\Lab 2\Lab 2\main.cpp(11,12): warning C4101: 'currencies': unreferenced local variable
-  Soum.cpp
-  Generating Code...
+﻿  main.cpp
+C:\Users\CoreV21\source\DataStructuresAndAlgorithms\Lab 2\Lab 2\Currency.h(41,14): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\CoreV21\source\DataStructuresAndAlgorithms\Lab 2\Lab 2\Currency.h(79,15): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
   Lab 2.vcxproj -> C:\Users\CoreV21\source\DataStructuresAndAlgorithms\Lab 2\Debug\Lab 2.exe

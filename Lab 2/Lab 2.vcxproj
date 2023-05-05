@@ -139,10 +139,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Currency.cpp" />
-    <ClCompile Include="Krone.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Soum.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Currency.h" />
+    <ClInclude Include="Krone.h" />
+    <ClInclude Include="Soum.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,27 +1,20 @@
 #include <iostream>
 #include <string>
 #include <sstream>
-#include "Currency.cpp"
-#include "Krone.cpp"
-#include "Soum.cpp"
+#include "Currency.h"
+#include "Krone.h"
+#include "Soum.h"
 
 using namespace std;
 
 int main() {
-	
 	Currency* currencies[2];
-	currencies[0] = new Soum(2.35);      //should they be dynamically allocated?
+	currencies[0] = new Soum();     
 	currencies[1] = new Krone();
 
-	currencies[0]->print(); 
 	/*
-
 	// what exceptions is he talking about? See below:
-	// "Throw String (or equivalent) exceptions from within the classes to ensure that invalid objects cannot be created."
-	// Can we assume input won't be invalid? NO! Have to handle it. 
-	// I think Krone and Soum are not supposed to be negative. \
-	// Should input errors result in just error messages or exceptions that halt the program? 
-
+	// "Throw String (or equivalent) exceptions from within the classes to ensure that invalid objects cannot be created." 
 
 	string line;
 	char modificationType;
@@ -48,8 +41,5 @@ int main() {
 		getline(cin, line);
 	}
 	*/
-
-	
-
 	return 0;
 }
