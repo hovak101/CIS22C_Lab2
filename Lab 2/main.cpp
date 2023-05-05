@@ -18,10 +18,17 @@ try{
 		currencies[i]->print(); 
 		delete currencies[i];
 	}
-	} catch(const std::exception& e){
+} 
+	catch(const std::exception& e){
 		std::cerr << "Exception: "<< e.what() << std::endl;
 	}
 	catch(const negativeException& e){
+		std::cerr <<"Exception: " << e.what() << std::endl;
+	}
+	catch(const typeException& e){
+		std::cerr <<"Exception: " << e.what() << std::endl;
+	}
+	catch(const currencyException& e){
 		std::cerr <<"Exception: " << e.what() << std::endl;
 	}
 
