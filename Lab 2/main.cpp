@@ -9,11 +9,30 @@ using namespace std;
 
 int main() {
 	
+try{
 	Currency* currencies[2];
-	currencies[0] = new Soum(2.35);      //should they be dynamically allocated?
+	currencies[0] = new Soum();      //should they be dynamically allocated?
 	currencies[1] = new Krone();
+	
+	for(int i = 0; i < 2; i++){
+		currencies[i]->print(); 
+		delete currencies[i];
+	}
+} 
+	catch(const std::exception& e){
+		std::cerr << "Exception: "<< e.what() << std::endl;
+	}
+	catch(const negativeException& e){
+		std::cerr <<"Exception: " << e.what() << std::endl;
+	}
+	catch(const typeException& e){
+		std::cerr <<"Exception: " << e.what() << std::endl;
+	}
+	catch(const currencyException& e){
+		std::cerr <<"Exception: " << e.what() << std::endl;
+	}
 
-	currencies[0]->print(); 
+	
 	/*
 
 	// what exceptions is he talking about? See below:
@@ -49,7 +68,6 @@ int main() {
 	}
 	*/
 
-	
 
 	return 0;
 }
