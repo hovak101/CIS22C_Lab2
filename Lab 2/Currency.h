@@ -1,4 +1,6 @@
-#pragma once
+#ifndef CURRENCY_H
+#define CURRENCY_H
+
 #include <iostream>
 #include <string>
 #include <cmath>
@@ -13,21 +15,22 @@ public:
 	// Constructers, Copy Constructer, and Destructor:
 	Currency();
 	Currency(double value);
-	Currency(const Currency& origObject);
+	//Currency(const Currency& origObject);
 	virtual ~Currency() {};
 
 	// Setters and Getters:
 	int getWhole() const { return whole; }
 	int getFrac() const { return frac; }
-	void setWhole(int whole) { this->whole = whole; } //throw exception if negative
-	void setFrac(int frac) { this->frac = frac; }     //throw exception if negative
+	void setWhole(int whole);
+	void setFrac(int frac);
+	virtual std::string getName() const = 0;
 
 	// Arithmetic and Comparison Functions:
 	void add(Currency* other);
 	void subtract(Currency* other);
 	bool isEqual(Currency* other) const;
 	bool isGreater(Currency* other) const;
-	virtual void print() const = 0;
+	void print() const;
 };
 
 Currency::Currency() {
@@ -36,19 +39,40 @@ Currency::Currency() {
 }
 
 Currency::Currency(double value) {
-	// throw exception if value < 0
+	if (value < 0) {
+		throw "Currency can't be negative.";
+	}
+
 	whole = static_cast<int>(value);
 	frac = round((value - whole) * 100);
 }
 
 Currency::Currency(const Currency& origObject) {
-	// throw exception if origObject class does not match that of the caller's class. 
 	this->whole = origObject.whole;
 	this->frac = origObject.frac;
 }
 
+void Currency::setWhole(int whole) {
+	if (whole < 0) {
+		throw "Currency can't be negative.";
+	}
+
+	this->whole = whole;
+}
+
+void Currency::setFrac(int frac) {
+	if (frac < 0) {
+		throw "Currency can't be negative.";
+	}
+
+	this->frac = frac;
+}
+
 void Currency::add(Currency* other) {
-	//throw exception if other is not the same type as caller. 
+	if (this->getName() != other->getName()) {
+		throw "Invalid addition.";
+	}
+
 	this->whole += other->whole;
 	this->frac += other->frac;
 
@@ -59,7 +83,9 @@ void Currency::add(Currency* other) {
 }
 
 void Currency::subtract(Currency* other) {
-	// throw exception if other is not the same type as caller. 
+	if (this->getName() != other->getName()) {
+		throw "Invalid subtraction.";
+	}
 
 	//First convert both numbers to doubles. 
 	double thisVal = whole;
@@ -71,22 +97,27 @@ void Currency::subtract(Currency* other) {
 	double finalVal = thisVal - otherVal;
 
 	if (finalVal < 0) {
-		//throw exception
+		throw "Invalid subtraction.";
 	}
-	else {
-		//convert finalVal to whole and frac
-		whole = static_cast<int>(finalVal);
-		frac = round((finalVal - whole) * 100);
-	}
+	
+	//convert finalVal to whole and frac
+	whole = static_cast<int>(finalVal);
+	frac = round((finalVal - whole) * 100);
 }
 
 bool Currency::isEqual(Currency* other) const {
-	// throw exception if other is not of the same type as caller. 
+	if (this->getName() != other->getName()) {
+		throw "Currencies are not of the same type.";
+	}
+
 	return (whole == other->whole) && (frac == other->frac);
 }
 
 bool Currency::isGreater(Currency* other) const {
-	// throw exception if other is not the same currency. 
+	if (this->getName() != other->getName()) {
+		throw "Currencies are not of the same type";
+	}
+
 	if (whole > other->whole) {
 		return true;
 	}
@@ -98,3 +129,14 @@ bool Currency::isGreater(Currency* other) const {
 	return false;
 }
 
+void Currency::print() const {
+	std::cout << whole << ".";
+
+	if (frac < 10) {
+		std::cout << "0";
+	}
+
+	std::cout << frac << " " << getName();
+}
+
+#endif

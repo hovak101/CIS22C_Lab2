@@ -1,4 +1,4 @@
 ﻿  main.cpp
-C:\Users\CoreV21\source\DataStructuresAndAlgorithms\Lab 2\Lab 2\Currency.h(41,14): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\CoreV21\source\DataStructuresAndAlgorithms\Lab 2\Lab 2\Currency.h(79,15): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\CoreV21\source\DataStructuresAndAlgorithms\Lab 2\Lab 2\Currency.h(47,14): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\CoreV21\source\DataStructuresAndAlgorithms\Lab 2\Lab 2\Currency.h(111,14): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
   Lab 2.vcxproj -> C:\Users\CoreV21\source\DataStructuresAndAlgorithms\Lab 2\Debug\Lab 2.exe

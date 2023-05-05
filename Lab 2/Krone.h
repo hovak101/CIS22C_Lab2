@@ -1,4 +1,6 @@
-#pragma once
+#ifndef KRONE_H
+#define KRONE_H
+
 #include <iostream>
 #include <string>
 #include "Currency.h"
@@ -12,15 +14,7 @@ public:
 	Krone() { name = "Krone"; }
 	Krone(double value) : Currency(value) { name = "Krone"; }
 
-	void print() const override;
+	std::string getName() const override { return name; }
 };
 
-void Krone::print() const {
-	std::cout << whole << ".";
-
-	if (frac < 10) {
-		std::cout << "0";
-	}
-
-	std::cout << frac << " " << name << std::endl;
-}
+#endif

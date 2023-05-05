@@ -12,34 +12,82 @@ int main() {
 	currencies[0] = new Soum();     
 	currencies[1] = new Krone();
 
-	/*
-	// what exceptions is he talking about? See below:
-	// "Throw String (or equivalent) exceptions from within the classes to ensure that invalid objects cannot be created." 
-
 	string line;
-	char modificationType;
+	char operationType;
 	char valueType;
 	double value;
 	string receiver;
+	int receiverIndex;
+	stringstream stream;
+	Currency* newCurr = nullptr;
+
+	cout << "Output: ";
+	currencies[0]->print();
+	cout << " ";
+	currencies[1]->print();
+	cout << endl;
 
 	cout << "Input: ";
 	getline(cin, line);
-	stringstream stream;
+	stream.str(line);
+	stream >> operationType >> valueType >> value >> receiver;
 
-	while (line != "q") {                   //Should I change so that it only looks for the character?
-		stream.str(line);
-		stream >> modificationType >> valueType >> value >> receiver;
-		cout << "Output: " << endl; 
-		cout << "modification type: " << modificationType << endl;
-		cout << "value type: " << valueType << endl;
-		cout << "value: " << value << endl;
-		cout << "receiver: " << receiver << endl << endl;
+	while (line != "q") {  
+		try {
+			if (valueType == 's') {
+				newCurr = new Soum(value);
+			}
+			else if (valueType == 'k') {
+				newCurr = new Krone(value);
+			}
+			else {
+				throw "New currency must be of type 's'(Soum) or 'k'(Krone).";
+			}
 
+			if (receiver == "Soum") {
+				receiverIndex = 0;
+			}
+			else if (receiver == "Krone") {
+				receiverIndex = 1;
+			}
+			else {
+				throw "Receiving object must be of type 'Soum' or 'Krone'.";
+			}
+
+			if (operationType == 'a') {
+				currencies[receiverIndex]->add(newCurr);
+			}
+			else if (operationType == 's') {
+				currencies[receiverIndex]->subtract(newCurr);
+			}
+			else if (operationType == 'g') {
+				currencies[receiverIndex]->isGreater(newCurr);
+			}
+			else if (operationType == 'e') {
+				currencies[receiverIndex]->isEqual(newCurr);
+			}
+			else {
+				throw "Modification must be of type 'a'(addition), 's'(subtraction), 'g'(is greater), or 'e'(is equal).";
+			}
+		}
+		catch (const char *msg) {
+			cout << "Error: " << msg << endl;
+		}
+
+		cout << "Output: ";
+		currencies[0]->print();
+		cout << " ";
+		currencies[1]->print();
+		cout << endl;
+
+		delete newCurr;
 		stream.clear();
 
 		cout << "Input: ";
 		getline(cin, line);
+		stream.str(line);
+		stream >> operationType >> valueType >> value >> receiver;
 	}
-	*/
+
 	return 0;
 }
