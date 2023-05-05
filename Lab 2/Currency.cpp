@@ -10,6 +10,20 @@ public:
 	}
 };
 
+class typeException : public std ::exception {
+public:
+	const char* what() const throw(){
+		return "Exception: type does not match.";
+	}
+};
+
+class currencyException : public std::exception{
+public:
+	const char* what() const throw() {
+		return "Exception: currencies don't match.";
+	}
+};
+
 class Currency{	
 protected:
 	int whole;
@@ -32,7 +46,10 @@ public:
 	}
 
 	Currency(const Currency& origObject) {
-		// throw exception if origObject class does not match that of the caller's class. 
+		// throw exception if origObject class does not match that of the caller's class.
+		if(typeid(origObject) != typeid(*this)){
+			throw typeException();
+		}
 		this->whole = origObject.whole; 
 		this->frac = origObject.frac;
 	}
@@ -57,6 +74,9 @@ public:
 	// Arithmetic and Comparison Functions:
 	void add(Currency* other) {                  
 		//throw exception if other is not the same type as caller. 
+		if(typeid(*other) != typeid(*this)){
+			throw typeException();
+		}
 		this->whole += other->whole;
 		this->frac += other->frac;
 
@@ -66,9 +86,14 @@ public:
 		frac = frac - temp * 100;    
 	}
 
-	void subtract(Currency* other) {              
-		// throw exception if other is not the same type as caller. 
-
+	void subtract(Currency* other) {                      
+		//throw exception if other is not the same type as caller. 
+		if(typeid(*other) != typeid(*this)){
+			throw typeException();
+		}
+		if(this->getWhole() != other->getWhole() || this->getFrac() != other->getFrac()) {
+           		throw currencyException();
+	    	}
 		//First convert both numbers to doubles. 
 		double thisVal = whole; 
 		thisVal += frac / 100.0;
@@ -89,12 +114,18 @@ public:
 	}
 
 	bool isEqual(Currency* other) const { 
-		// throw exception if other is not of the same type as caller. 
+		// throw exception if other is not of the same type as caller.
+		if(typeid(*other) != typeid(*this)){
+			throw typeException();
+		}
 		return (whole == other->whole) && (frac == other->frac);
 	}
 
 	bool isGreater(Currency* other) const {    
 		// throw exception if other is not the same currency. 
+		if(this->getWhole() != other->getWhole() || this->getFrac() != other->getFrac()) {
+           		throw currencyException();
+	    	}
 		if (whole > other->whole) {
 			return true; 
 		}
