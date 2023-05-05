@@ -7,13 +7,6 @@
 
 using namespace std;
 
-class negativeException : public std ::exception {
-	public:
-	const char* what() const throw(){
-		return "Exception: value must be postitive.";
-	}
-};
-
 int main() {
 	
 try{
@@ -68,7 +61,6 @@ try{
 	}
 	*/
 
-	
 
 	return 0;
 }
