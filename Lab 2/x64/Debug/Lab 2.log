@@ -1,0 +1,11 @@
+﻿  Krone.cpp
+C:\Users\lenovo\source\repos\22C_Labs\Lab2\Lab 2\Currency.cpp(21,32): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\lenovo\source\repos\22C_Labs\Lab2\Lab 2\Currency.cpp(67,36): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  Soum.cpp
+C:\Users\lenovo\source\repos\22C_Labs\Lab2\Lab 2\Currency.cpp(21,32): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\lenovo\source\repos\22C_Labs\Lab2\Lab 2\Currency.cpp(67,36): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  main.cpp
+C:\Users\lenovo\source\repos\22C_Labs\Lab2\Lab 2\Currency.cpp(21,32): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\lenovo\source\repos\22C_Labs\Lab2\Lab 2\Currency.cpp(67,36): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  Generating Code...
+  Lab 2.vcxproj -> C:\Users\lenovo\source\repos\22C_Labs\Lab2\x64\Debug\Lab 2.exe

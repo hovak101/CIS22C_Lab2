@@ -8,10 +8,13 @@
 using namespace std;
 
 int main() {
+	
 	Currency* currencies[2];
-	//currencies[0] = new Soum(0);      //should they be dynamically allocated?
-	//currencies[1] = new Krone(0);
+	currencies[0] = new Soum(2.35);      //should they be dynamically allocated?
+	currencies[1] = new Krone();
 
+	currencies[0]->print(); 
+	/*
 
 	// what exceptions is he talking about? See below:
 	// "Throw String (or equivalent) exceptions from within the classes to ensure that invalid objects cannot be created."
@@ -44,7 +47,9 @@ int main() {
 		cout << "Input: ";
 		getline(cin, line);
 	}
+	*/
 
+	
 
 	return 0;
 }
